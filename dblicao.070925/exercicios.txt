@@ -1,0 +1,66 @@
+1. IDEF0 A-0 e A0
+A-0 – Gestão de Cupons
+•	Entradas: Necessidades do Negócio, Políticas e Regras.
+•	Controles: LGPD e Antifraude.
+•	Mecanismos: Times/Sistemas.
+•	Saídas: Pedido Processado, Auditoria e Logs.
+A0 – Detalhamento da Gestão de Cupons
+1.	Definir Regras de Cupom
+2.	Publicar Cupons
+3.	Validar/Aplicar Cupom no Checkout
+4.	Auditar Uso de Cupom
+
+
+2. Cinco visões RM-ODP (versão objetiva)
+Visão de Negócio (Enterprise):
+O sistema existe para aumentar as vendas com cupons de desconto. Os envolvidos são cliente,
+ marketing, financeiro e suporte. As regras principais são: criar cupons, aplicar no checkout 
+ e acompanhar por auditoria.
+
+
+Visão de Informação (Information):
+As entidades principais são Cliente, Produto, Categoria, Pedido, Item_Pedido, Cupom, RegraCupom
+ e LogCupom. Cada cupom tem um código único e só vale se estiver ativo e dentro do prazo. O pedido
+  pode estar em três estados: criado, pago e enviado.
+
+
+Visão Computacional (Computational):
+O sistema é dividido em serviços: catálogo (produtos/categorias), cupons (criar/aplicar), 
+pedidos (criar/finalizar), pagamentos e auditoria. Cada serviço tem funções bem definidas e 
+trocam dados entre si.
+
+
+Visão de Engenharia (Engineering):
+A aplicação roda no navegador (front), conversa com o backend e usa banco relacional e cache. A auditoria é feita por mensagens assíncronas. Tudo precisa ser rápido (checkout em até 400ms) e monitorado por logs e métricas.
+
+
+3. MER (Modelo Entidade-Relacionamento)
+Entidades e atributos principais:
+•	Cliente (idCliente [PK], nome, cpf [UNIQUE], email, telefone)
+•	Produto (idProduto [PK], nome, preço, estoque, idCategoria [FK])
+•	Categoria (idCategoria [PK], nomeCategoria)
+•	Pedido (idPedido [PK], dataPedido, status, idCliente [FK], idCupom [FK opcional])
+•	Item_Pedido (idItem [PK], idPedido [FK], idProduto [FK], quantidade, subtotal)
+•	Cupom (idCupom [PK], codigo [UNIQUE], validade, ativo, valorDesconto, tipoDesconto)
+•	RegraCupom (idRegra [PK], descricao, condicao, idCupom [FK])
+•	LogCupom (idLog [PK], idCupom [FK], idPedido [FK], dataUso, status)
+
+
+4. DER (Diagrama Entidade-Relacionamento com PK/FK)
+•	Cliente (1:N) Pedido
+•	Pedido (1:N) Item_Pedido
+•	Produto (1:N) Item_Pedido
+•	Categoria (1:N) Produto
+•	Cupom (1:1) Pedido
+•	Cupom (1:N) RegraCupom
+•	Cupom (1:N) LogCupom
+•	Pedido (1:N) LogCupom
+
+
+5. Relacionamentos N:M
+•	Pedido–Produto é N:M, resolvido pela entidade Item_Pedido.
+
+
+6. Atributos Únicos
+•	CPF do Cliente deve ser único.
+•	Código do Cupom deve ser único.
