@@ -1,0 +1,126 @@
+1️⃣ Visão Empresarial.
+Inclui:
+●	Objetivo do sistema hospitalar
+
+●	Atores organizacionais:
+
+○	Paciente
+
+○	Médico
+
+○	Enfermeiro
+
+○	Setores (Emergência, Internação, etc.)
+
+○	Convênios
+
+●	Regras de negócio gerais
+
+●	Restrições
+
+●	Processos:
+
+○	Cadastro
+
+○	Atendimento
+
+○	Agendamento
+
+○	Internação
+
+○	Controle de leitos
+
+○	Faturamento
+
+________________________________________
+
+2️⃣ Visão Informacional
+Mostra quais informações o sistema manipula e como elas se relacionam.
+É quase um “pré-ER”, descrevendo:
+Principais objetos de informação:
+●	Paciente
+
+●	Profissional
+
+●	Setor
+
+●	Leito
+
+●	Procedimento
+
+●	Agendamento
+
+●	Atendimento
+
+●	Exame/Laboratório
+
+●	Faturamento
+
+●	Histórico Médico
+
+Para cada objeto:
+●	Definir atributos importantes
+
+●	Regras sobre quem pode acessar/alterar
+
+●	Ciclo de vida (ex: agendamento → atendimento → faturamento → histórico)
+
+________________________________________
+
+3️⃣ Visão Computacional (Computational Viewpoint)
+Modela o sistema como componentes/lógicas separadas, não fala de tecnologia ainda.
+Você descreve módulos e serviços, como:
+●	Módulo de Cadastro
+
+●	Módulo de Agendamentos
+
+●	Módulo de Prontuário
+
+●	Módulo de Internação e Leitos
+
+●	Módulo Financeiro
+
+●	Módulo de Auditoria
+
+●	Módulo de Relatórios
+
+●	Módulo de Autenticação e Controle de Acesso
+
+E como esses módulos interagem.
+
+________________________________________
+
+4️⃣ Visão de Engenharia
+Fala sobre como o sistema será distribuído, comunicação, recursos, infraestrutura.
+Aqui você define:
+●	Componentes do servidor:
+
+○	Banco Oracle
+
+○	Backend
+
+○	API
+
+○	Frontend
+
+●	Comunicação entre módulos
+
+●	Segurança (criptografia, login, perfis de usuário)
+
+●	Tolerância a falhas (backup, logs, auditoria)
+
+________________________________________
+
+5️⃣ Visão Tecnológica
+●	Banco de dados Oracle
+
+●	Linguagem backend (ex: Java, Spring)
+
+●	Frontend (React, Angular etc.)
+
+●	Aplicações de monitoramento
+
+●	LDAP ou OAuth para autenticação
+
+●	Infraestrutura (on-premise, cloud etc.)
+
