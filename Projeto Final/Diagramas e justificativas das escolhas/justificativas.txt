@@ -1,28 +1,34 @@
+→ Diagrama ER e justificativas (explicado de forma simples)
+
 O sistema foi dividido em várias tabelas porque cada parte tem um papel diferente no hospital.
 Aqui vai a lógica por trás da modelagem:
 
-PACIENTE: guarda dados do paciente.
+● PACIENTE: guarda dados do paciente.
 
-PROFISSIONAL: guarda dados de qualquer profissional do hospital.
+● PROFISSIONAL: guarda dados de qualquer profissional do hospital.
 
-MEDICO e ENFERMEIRO usam o mesmo id do PROFISSIONAL (porque são “tipos” de profissional).
+● MEDICO e ENFERMEIRO usam o mesmo id do PROFISSIONAL (porque são “tipos” de profissional).
 
-ESPECIALIDADE e MEDICO_ESPECIALIDADE: médico pode ter várias especialidades, por isso fizemos 
+● ESPECIALIDADE e MEDICO_ESPECIALIDADE: médico pode ter várias especialidades, por isso fizemos 
 uma tabela só para relacionar eles.
 
-LEITO e SETOR: cada setor tem vários leitos.
+● LEITO e SETOR: cada setor tem vários leitos.
 
-INTERNACAO: liga paciente + leito + médico responsável.
+● INTERNACAO: liga paciente + leito + médico responsável.
 
-AGENDAMENTO: registra consultas/procedimentos agendados.
+● AGENDAMENTO: registra consultas/procedimentos agendados.
 
-EXAME / RESULTADO_EXAME: pedido do exame e seu resultado.
+● EXAME / RESULTADO_EXAME: pedido do exame e seu resultado.
 
-PRESCRICAO / PRESCRICAO_ITEM: receita médica com vários medicamentos.
+● PRESCRICAO / PRESCRICAO_ITEM: receita médica com vários medicamentos.
 
-FATURA / FATURA_ITEM / PAGAMENTO: parte financeira.
+● FATURA / FATURA_ITEM / PAGAMENTO: parte financeira.
 
-HISTORICO: registra mudanças importantes (internação, alta, etc).
+● HISTORICO: registra mudanças importantes (internação, alta, etc).
 
 Fizemos assim pois os dados ficam organizados e sem repetição, evita informações sobrando,
 facilita atualizações, mantém integridade com as chaves estrangeiras.
+
+
+→ Problemas encontrados e soluções adotadas
+
